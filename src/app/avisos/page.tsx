@@ -8,6 +8,7 @@ import { db } from "@/lib/db";
 import { diasHasta, resumenAvisos } from "@/lib/estados";
 import { formatearCantidad, formatearFecha } from "@/lib/formato";
 import type { Producto } from "@/lib/types";
+import { rutaProducto } from "@/lib/rutas";
 
 interface Grupo {
   titulo: string;
@@ -31,7 +32,7 @@ function GrupoAvisos({ g }: { g: Grupo }) {
       <ul className="tarjeta divide-y divide-zinc-100">
         {g.productos.map((p) => (
           <li key={p.id}>
-            <Link href={`/productos/${p.id}`} className="flex items-center gap-3 px-4 py-3 hover:bg-zinc-50">
+            <Link href={rutaProducto(p.id)} className="flex items-center gap-3 px-4 py-3 hover:bg-zinc-50">
               <div className="min-w-0 flex-1">
                 <p className="truncate font-medium">{p.nombre}</p>
                 <p className="truncate text-xs text-zinc-500">{g.detalle(p)}</p>

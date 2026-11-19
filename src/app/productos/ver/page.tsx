@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useLiveQuery } from "dexie-react-hooks";
 import DialogoConfirmar from "@/components/DialogoConfirmar";
 import Encabezado from "@/components/Encabezado";
@@ -18,6 +18,7 @@ import { estadoStock } from "@/lib/estados";
 import { formatearCantidad, formatearFecha, formatearPrecio } from "@/lib/formato";
 import { eliminarProducto } from "@/lib/productos";
 import type { Producto } from "@/lib/types";
+import { rutaEditar } from "@/lib/rutas";
 
 type Pestana = "detalles" | "movimientos";
 
@@ -104,7 +105,7 @@ function Detalles({ p }: { p: Producto }) {
 }
 
 export default function DetalleProductoPage() {
-  const { id } = useParams<{ id: string }>();
+  const id = useSearchParams().get("id") ?? "";
   const router = useRouter();
   const toast = useToast();
   // undefined = cargando; null = no existe.
@@ -140,7 +141,7 @@ export default function DetalleProductoPage() {
     <>
       <Encabezado titulo={p.nombre} subtitulo={p.categoria} volver="/">
         <Link
-          href={`/productos/${p.id}/editar`}
+          href={rutaEditar(p.id)}
           className="rounded-full p-2 text-zinc-700 hover:bg-zinc-200/70"
           aria-label="Editar producto"
         >

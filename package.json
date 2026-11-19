@@ -8,23 +8,29 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "iconos": "node scripts/generar-iconos.mjs"
   },
   "dependencies": {
+    "@serwist/turbopack": "^9.5.15",
+    "@serwist/window": "^9.5.15",
     "dexie": "^4.4.7",
     "dexie-react-hooks": "^4.4.0",
     "next": "16.4.6",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "serwist": "^9.5.15"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^26.6.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "esbuild": "^0.28.2",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "fake-indexeddb": "^6.2.8",
+    "sharp": "^0.35.5",
     "tailwindcss": "4.3.3",
     "typescript": "^5",
     "vitest": "^5.1.1"

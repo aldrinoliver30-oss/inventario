@@ -4,6 +4,7 @@ import { formatearCantidad, formatearPrecio } from "@/lib/formato";
 import type { Producto } from "@/lib/types";
 import Estrellas from "./Estrellas";
 import { EtiquetaStock, EtiquetaVencimiento } from "./Etiquetas";
+import { rutaProducto } from "@/lib/rutas";
 
 const COLOR_STOCK = {
   agotado: "text-red-600",
@@ -15,7 +16,7 @@ export default function TarjetaProducto({ producto: p }: { producto: Producto })
   const estado = estadoStock(p);
   return (
     <Link
-      href={`/productos/${p.id}`}
+      href={rutaProducto(p.id)}
       className="tarjeta flex items-center gap-3 p-3 transition hover:ring-zinc-900/10 active:scale-[0.99]"
     >
       <div

@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useLiveQuery } from "dexie-react-hooks";
 import Encabezado from "@/components/Encabezado";
 import FormularioProducto from "@/components/FormularioProducto";
@@ -9,9 +9,10 @@ import { useToast } from "@/components/Toast";
 import { db } from "@/lib/db";
 import { actualizarProducto } from "@/lib/productos";
 import { aFormulario } from "@/lib/validacion";
+import { rutaProducto } from "@/lib/rutas";
 
 export default function EditarProductoPage() {
-  const { id } = useParams<{ id: string }>();
+  const id = useSearchParams().get("id") ?? "";
   const router = useRouter();
   const toast = useToast();
   // El formulario copia estos valores al montarse, así que no se reinicia mientras se edita.
@@ -26,7 +27,7 @@ export default function EditarProductoPage() {
 
   return (
     <>
-      <Encabezado titulo="Editar producto" subtitulo={datos.producto.nombre} volver={`/productos/${id}`} />
+      <Encabezado titulo="Editar producto" subtitulo={datos.producto.nombre} volver={rutaProducto(id)} />
       <FormularioProducto
         key={id}
         inicial={aFormulario(datos.producto)}
@@ -36,7 +37,7 @@ export default function EditarProductoPage() {
         onGuardar={async (nuevos, foto) => {
           await actualizarProducto(id, nuevos, foto);
           toast({ tipo: "exito", titulo: "Cambios guardados" });
-          router.replace(`/productos/${id}`);
+          router.replace(rutaProducto(id));
         }}
       />
     </>

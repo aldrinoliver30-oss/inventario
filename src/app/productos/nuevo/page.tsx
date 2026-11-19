@@ -7,6 +7,7 @@ import { useToast } from "@/components/Toast";
 import { estadoStock } from "@/lib/estados";
 import { crearProducto } from "@/lib/productos";
 import { FORMULARIO_VACIO } from "@/lib/validacion";
+import { rutaProducto } from "@/lib/rutas";
 
 export default function NuevoProductoPage() {
   const router = useRouter();
@@ -30,7 +31,7 @@ export default function NuevoProductoPage() {
               mensaje: "Guardado. Registra una entrada cuando repongas.",
             });
           }
-          router.replace(`/productos/${id}`);
+          router.replace(rutaProducto(id));
         }}
       />
     </>
