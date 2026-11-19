@@ -1,5 +1,6 @@
 import { db } from "./db";
 import { estadoStock } from "./estados";
+import { formatearCantidad } from "./formato";
 import { redondearCantidad } from "./productos";
 import { admiteDecimales } from "./validacion";
 import type { EstadoStock, Movimiento, Producto, TipoMovimiento } from "./types";
@@ -38,7 +39,7 @@ export async function registrarMovimiento(m: NuevoMovimiento): Promise<Resultado
     }
     if (m.tipo === "salida" && m.cantidad > producto.cantidad) {
       throw new ErrorMovimiento(
-        `Stock insuficiente: solo hay ${producto.cantidad} ${producto.unidad}.`,
+        `Stock insuficiente: solo hay ${formatearCantidad(producto.cantidad)} ${producto.unidad}.`,
       );
     }
 

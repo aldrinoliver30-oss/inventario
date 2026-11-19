@@ -19,7 +19,7 @@ body {
 
 /* Campos de formulario consistentes */
 @utility campo {
-  @apply block w-full rounded-xl border border-zinc-200 bg-white px-3.5 py-2.5 text-base text-zinc-900 shadow-xs outline-none transition placeholder:text-zinc-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/15;
+  @apply block w-full min-w-0 rounded-xl border border-zinc-200 bg-white px-3.5 py-2.5 text-base text-zinc-900 shadow-xs outline-none transition placeholder:text-zinc-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/15;
   &[aria-invalid="true"] {
     @apply border-red-400 focus:border-red-500 focus:ring-red-500/15;
   }

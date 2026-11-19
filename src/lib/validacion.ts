@@ -37,14 +37,14 @@ export const FORMULARIO_VACIO: FormularioProducto = {
 
 /** Valores de formulario a partir de un producto existente (para editar). */
 export function aFormulario(p: DatosProducto): FormularioProducto {
-  const num = (n: number) => (n === 0 ? "" : String(n));
+  const num = (n: number) => (n === 0 ? "" : String(n).replace(".", ","));
   return {
     nombre: p.nombre,
     categoria: p.categoria,
     unidad: p.unidad,
     calidad: p.calidad,
     fechaVencimiento: p.fechaVencimiento ?? "",
-    cantidad: String(p.cantidad),
+    cantidad: String(p.cantidad).replace(".", ","),
     stockMinimo: num(p.stockMinimo),
     precioCompra: num(p.precioCompra),
     precioVenta: num(p.precioVenta),

@@ -15,12 +15,10 @@ import Estrellas from "./Estrellas";
 
 function Seccion({ titulo, children }: { titulo: string; children: React.ReactNode }) {
   return (
-    <fieldset className="tarjeta space-y-4 p-4">
-      <legend className="float-left mb-1 w-full text-xs font-semibold tracking-wide text-zinc-500 uppercase">
-        {titulo}
-      </legend>
+    <section className="tarjeta min-w-0 space-y-4 p-4">
+      <h2 className="text-xs font-semibold tracking-wide text-zinc-500 uppercase">{titulo}</h2>
       {children}
-    </fieldset>
+    </section>
   );
 }
 
@@ -38,7 +36,7 @@ function Campo({
   children: React.ReactNode;
 }) {
   return (
-    <label className="block">
+    <label className="block min-w-0">
       <span className="mb-1 block text-sm font-medium text-zinc-700">
         {etiqueta}
         {opcional && <span className="font-normal text-zinc-400"> (opcional)</span>}
