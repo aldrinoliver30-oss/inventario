@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Inventario
 
-## Getting Started
+App web de inventario para vendedores y distribuidores, pensada para el celular.
 
-First, run the development server:
+- Productos con calidad (1–5 ★), vencimiento, lote, proveedor, código/SKU, notas y foto.
+- Entradas y salidas de stock con historial.
+- Avisos dentro de la app cuando un producto llega a su stock mínimo o se agota, y cuando vence o está por vencer.
+- Se instala en el celular como app (PWA) y funciona sin internet.
+- Los datos se guardan solo en el dispositivo (IndexedDB). Desde Ajustes se puede exportar e importar un respaldo `.json`.
+
+## Instalar en el celular
+
+1. Abre la dirección publicada en el navegador del celular (Chrome en Android, Safari en iPhone).
+2. Menú del navegador → **Instalar app** o **Agregar a pantalla de inicio**.
+3. Ábrela una vez con internet; desde ahí funciona sin conexión.
+
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000 (sin service worker)
+npm test           # tests de la lógica (Vitest)
+npm run build && npm start   # versión de producción, con service worker
+npm run iconos     # regenera los PNG desde public/icons/icon.svg
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Stack: Next.js 16 (App Router, `cacheComponents`), TypeScript, Tailwind CSS 4, Dexie (IndexedDB) y Serwist (service worker).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Las especificaciones están en [`specs/`](specs/): la [SPEC 03](specs/03-inventario-v2.md) describe la app y la [SPEC 02](specs/02-pwa-offline.md) la PWA y el modo offline.
