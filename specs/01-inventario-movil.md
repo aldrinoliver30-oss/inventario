@@ -1,6 +1,6 @@
 # SPEC 01 — Inventario móvil con vencimientos y movimientos de stock
 
-> **Estado:** aprobado
+> **Estado:** Implementado
 > **Depende de:** —
 > **Fecha:** 2026-11-19
 > **Objetivo:** Una web app en Next.js, pensada para el celular, donde un vendedor o distribuidor registra sus productos con calidad y vencimiento, controla entradas y salidas de stock y ve de un vistazo qué está vencido o por vencer.
