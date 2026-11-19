@@ -35,6 +35,26 @@ export const FORMULARIO_VACIO: FormularioProducto = {
   notas: "",
 };
 
+/** Valores de formulario a partir de un producto existente (para editar). */
+export function aFormulario(p: DatosProducto): FormularioProducto {
+  const num = (n: number) => (n === 0 ? "" : String(n));
+  return {
+    nombre: p.nombre,
+    categoria: p.categoria,
+    unidad: p.unidad,
+    calidad: p.calidad,
+    fechaVencimiento: p.fechaVencimiento ?? "",
+    cantidad: String(p.cantidad),
+    stockMinimo: num(p.stockMinimo),
+    precioCompra: num(p.precioCompra),
+    precioVenta: num(p.precioVenta),
+    codigo: p.codigo,
+    lote: p.lote,
+    proveedor: p.proveedor,
+    notas: p.notas,
+  };
+}
+
 const UNIDADES_CON_DECIMALES: ReadonlySet<Unidad> = new Set(["kg", "g", "litro", "ml"]);
 
 export function admiteDecimales(unidad: string): boolean {

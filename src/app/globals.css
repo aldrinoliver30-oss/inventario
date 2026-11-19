@@ -1,25 +1,63 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  background: #f4f5f7;
+  color: #18181b;
+}
+
+/* Campos de formulario consistentes */
+@utility campo {
+  @apply block w-full rounded-xl border border-zinc-200 bg-white px-3.5 py-2.5 text-base text-zinc-900 shadow-xs outline-none transition placeholder:text-zinc-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/15;
+  &[aria-invalid="true"] {
+    @apply border-red-400 focus:border-red-500 focus:ring-red-500/15;
+  }
+}
+@utility tarjeta {
+  @apply rounded-2xl bg-white shadow-sm ring-1 ring-zinc-900/5;
+}
+@utility boton {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold transition active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+}
+@utility boton-primario {
+  @apply boton bg-emerald-600 text-white shadow-sm hover:bg-emerald-700;
+}
+@utility boton-secundario {
+  @apply boton bg-white text-zinc-800 ring-1 ring-zinc-200 hover:bg-zinc-50;
+}
+@utility boton-peligro {
+  @apply boton bg-red-600 text-white hover:bg-red-700;
+}
+
+/* Espacio para la barra inferior y el área segura del iPhone */
+.pb-nav {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+}
+.bottom-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@keyframes entrar-arriba {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animar-entrada {
+  animation: entrar-arriba 0.2s ease-out;
 }
